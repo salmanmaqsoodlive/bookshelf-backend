@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const errorMiddleware = require('./middleware/errorMiddleware')
 const userRoute = require('./routes/userRoute');
 const bookRoute = require('./routes/bookRoute');
+const genreRoute = require('./routes/genreRoute');
+const seedGenres = require('./seed');
 
 
 dotenv.config();
@@ -20,11 +22,15 @@ app.use('/api/user', userRoute)
 //book routes
 app.use('/api/book', bookRoute)
 
+//genre routes
+app.use('/api/genre', genreRoute)
+
 
 app.use(errorMiddleware)
 mongoose.connect(MONGO_URL)
     .then(() => {
         console.log('Database Connected!')
+        seedGenres()
         app.listen(PORT, () => console.log('Server is running on port', PORT))
 
     })

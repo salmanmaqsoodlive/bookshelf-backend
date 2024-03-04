@@ -33,7 +33,8 @@ const bookSchema = mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User',
             required: true
-        }
+        },
+        genre: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Genre', required: true }]
     },
     {
         timestamps: true

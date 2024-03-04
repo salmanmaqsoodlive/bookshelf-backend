@@ -8,7 +8,7 @@ router.post('/', signup)
 
 router.post('/signin', signin)
 
-router.get('/', auth, deleteUser)
+router.delete('/', auth, deleteUser)
 
 
 
