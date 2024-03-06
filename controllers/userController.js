@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 const signup = asyncHandler(async (req, res) => {
 
     try {
+        console.log("user", req.body);
         const hashedPassword = await bcrypt.hash(req.body.password, parseInt(process.env.SALT))
         const user = await User.create({ ...req.body, password: hashedPassword })
         user.password = undefined
