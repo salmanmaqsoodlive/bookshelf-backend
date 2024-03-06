@@ -18,7 +18,7 @@ const auth = async (req, res, next) => {
 
         next()
     } catch (error) {
-        throw new Error(error.message)
+        res.status(401).send({ message: "Unauthorized User" })
     }
 }
 

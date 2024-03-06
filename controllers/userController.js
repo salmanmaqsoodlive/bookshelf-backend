@@ -37,13 +37,14 @@ const signin = asyncHandler(async (req, res) => {
 
         const token = jwt.sign({ email: existingUser.email, id: existingUser._id }, process.env.JWT_SECRET_KEY, { expiresIn: '1h' })
 
-        res.status(201).send({ success: true, message: "User signin successfully", user: existingUser, token })
+        res.status(200).send({ success: true, message: "User signin successfully", user: existingUser, token })
     } catch (error) {
         res.status(500)
         throw new Error(error.message)
     }
 
 })
+
 
 
 const deleteUser = asyncHandler(async (req, res) => {
